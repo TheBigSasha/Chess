@@ -43,7 +43,7 @@ public class Board {
         if (!toMove.canMove(destX, destY, killing)){ return false;}
 
         //Check collision on the way, if it is not a horsey
-        if (!toMove.canHop()) {
+        if (!(toMove instanceof Knight)) {
             //Identify if it is diagonal, or linear
 
             int diffX = destX - x;

@@ -6,11 +6,6 @@ public class Knight extends Piece{
     }
 
     @Override
-    public boolean canHop() {
-        return true;
-    }
-
-    @Override
     public boolean canMove(int x, int y, boolean isKilling) {
         //L shaped move
         int deltaX = Math.abs(this.x - x);

@@ -30,10 +30,6 @@ public abstract class Piece {
         this.y = y;
     }
 
-    public boolean canHop(){
-        return false;
-    }
-
     public void kill(){
         this.x = -1;
         this.y = -1;

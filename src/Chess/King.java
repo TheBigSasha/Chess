@@ -12,6 +12,12 @@ public class King extends Piece {
     }
 
     @Override
+    public void kill() {
+        super.kill();
+        System.out.println("King is dead!");
+    }
+
+    @Override
     public String getSymbol() {
         return this.getSide() == Side.BLACK ? "♚" : "♔";
     }
