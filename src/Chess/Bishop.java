@@ -10,7 +10,7 @@ public class Bishop extends Piece {
         //Check being on the diagonal
         int diffX = this.x - x;
         int diffY = this.y - y;
-        return diffX == diffY;
+        return Math.abs(diffX) == Math.abs(diffY);
     }
 
     @Override

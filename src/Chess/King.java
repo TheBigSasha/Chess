@@ -8,7 +8,7 @@ public class King extends Piece {
 
     @Override
     public boolean canMove(int x, int y, boolean isKilling) {
-        return (Math.abs(this.x - x) <= 1 && Math.abs(this.y) - y <=1);
+        return (Math.abs(this.x - x) <= 1 && Math.abs(this.y  - y) <=1);
     }
 
     @Override

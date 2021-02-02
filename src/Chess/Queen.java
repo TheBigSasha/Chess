@@ -10,13 +10,13 @@ public class Queen extends Piece{
         //Check diagonal:
         int diffX = this.x - x;
         int diffY = this.y - y;
-        if(diffX == diffY) return true;
+        if(Math.abs(diffX) == Math.abs(diffY)) return true;
 
         //Check linear:
         if(this.x == x || this.y == y) return true;
 
         //Check 1 diff:
-        return (Math.abs(this.x - x) <= 1 && Math.abs(this.y) - y <=1);
+        return (Math.abs(this.x - x) <= 1 && Math.abs(this.y  - y) <=1);
     }
 
     @Override

@@ -63,12 +63,11 @@ public class Board {
                 int endX = Math.max(x, destX);
                 int startY = Math.min(y, destY);
                 int endY = Math.max(y, destY);
-                for(int i = startX; i < endX; i++){
-                    for(int j = startY; j < endY; j++){
+                for(int i = startX + 1; i < endX; i++){
+                    for(int j = startY + 1; j < endY; j++){
                         if(board[i][j] != null){
-                            if(!(i == destX && j == destY)) {
+
                                 return false;
-                            }
                         }
                     }
                 }
@@ -82,7 +81,7 @@ public class Board {
                     int endY = Math.max(y, destY);
                     for(int j = startY; j < endY; j++){
                         if(board[x][j] != null){
-                            if(!(x == destX && j == destY)) {
+                            if(!(x == destX && j == destY) && j != y) {
                                 return false;
                             }
                         }
@@ -91,8 +90,8 @@ public class Board {
                     int startX = Math.min(x, destX);
                     int endX = Math.max(x, destX);
                     for(int j = startX; j < endX; j++){
-                        if(board[y][j] != null){
-                            if(!(y == destY && j == destX)) {
+                        if(board[j][y] != null){
+                            if(!(y == destY && j == destX) && j != x) {
                                 return false;
                             }
                         }
