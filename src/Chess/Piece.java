@@ -28,6 +28,8 @@ public abstract class Piece {
 
     public abstract boolean canMove(int x, int y, boolean isKilling);
 
+    public abstract String getSymbol();
+
     public void move(int x, int y){
         this.x = x;
         this.y = y;

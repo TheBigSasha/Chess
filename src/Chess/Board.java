@@ -126,9 +126,23 @@ public class Board {
         board[kingRow][3] = new King(3,kingRow,side);
         board[kingRow][4] = new Queen(4,kingRow,side);
 
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < board[soldierRow].length; i++){
             board[soldierRow][i] = new Pawn(i, soldierRow, side);
         }
     }
 
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                if(board[i][j] == null){
+                    sb.append(" ");
+                }else{
+                    sb.append(board[i][j].getSymbol());
+                }
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

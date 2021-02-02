@@ -26,4 +26,9 @@ public class Pawn extends Piece{
         }
         return this.y - y == acceptableDifferenceY && Math.abs(this.x - x) == acceptableDifferenceX;
     }
+
+    @Override
+    public String getSymbol() {
+        return this.getSide() == Side.BLACK ? "♟︎" : "♙";
+    }
 }

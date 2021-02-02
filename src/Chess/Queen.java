@@ -18,4 +18,9 @@ public class Queen extends Piece{
         //Check 1 diff:
         return (Math.abs(this.x - x) <= 1 && Math.abs(this.y) - y <=1);
     }
+
+    @Override
+    public String getSymbol() {
+        return this.getSide() == Side.BLACK ? "♛" : "♕";
+    }
 }

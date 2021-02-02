@@ -17,4 +17,9 @@ public class Knight extends Piece{
         int deltaY = Math.abs(this.y - y);
         return deltaX + deltaY == 3 && deltaX > 0 && deltaY > 0;
     }
+
+    @Override
+    public String getSymbol() {
+        return this.getSide() == Side.BLACK ? "♞" : "♘";
+    }
 }

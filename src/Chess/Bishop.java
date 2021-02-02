@@ -12,4 +12,9 @@ public class Bishop extends Piece {
         int diffY = this.y - y;
         return diffX == diffY;
     }
+
+    @Override
+    public String getSymbol() {
+        return this.getSide() == Side.BLACK ? "♝" : "♗";
+    }
 }

@@ -10,4 +10,10 @@ public class Rook extends Piece{
         //Check linear:
         return (this.x == x || this.y == y);
     }
+
+
+    @Override
+    public String getSymbol() {
+        return this.getSide() == Side.BLACK ? "♜" : "♖";
+    }
 }
