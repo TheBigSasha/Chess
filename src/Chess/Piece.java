@@ -1,4 +1,4 @@
-package Chess2;
+package Chess;
 
 public abstract class Piece {
     protected int x, y;     //Accessible within package and to subclasses
@@ -27,6 +27,8 @@ public abstract class Piece {
     }
 
     public abstract void move(int x, int y);
+
+    public abstract boolean canMove(int x, int y);
 
     public void kill(){
         this.x = -1;
