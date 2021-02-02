@@ -5,7 +5,6 @@ public abstract class Piece {
 
     private boolean isDead;
 
-    private boolean hasMoved = false;
 
     private Side side;
 
@@ -22,10 +21,6 @@ public abstract class Piece {
         this.y = y;
     }
 
-    public boolean hasMoved() {
-        return hasMoved;
-    }
-
     public abstract boolean canMove(int x, int y, boolean isKilling);
 
     public abstract String getSymbol();
@@ -33,7 +28,6 @@ public abstract class Piece {
     public void move(int x, int y){
         this.x = x;
         this.y = y;
-        hasMoved = true;
     }
 
     public boolean canHop(){
