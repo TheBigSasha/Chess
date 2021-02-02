@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Board {
     private Piece[][] board;
-    private Piece.Side lastMove;
 
     public Board(){
         resetGame();
@@ -18,7 +17,6 @@ public class Board {
             board[x][y].move(destX,destY);
             board[destX][destY] = board[x][y];
             board[x][y] = null;
-            lastMove = board[destX][destY].getSide();
         }else{
             throw new IllegalArgumentException("Illegal move");
         }
@@ -32,9 +30,6 @@ public class Board {
         //Checks if the piece being moved is valid to be moved
         if (toMove == null) return false;
 
-        //Checks last move
-//        if(toMove.getSide() == lastMove) return false;
-        //TODO: bring back this check but in game class?
 
         //Checks if it is a kill and if it will hit a piece of the same side
         if(board[destX][destY] != null){
@@ -57,8 +52,6 @@ public class Board {
             //Diagonal
             if (diffX == diffY && Math.abs(diffX) > 1) {
                 //Determine direction of move
-//                int dirX = diffX > 0 ? 1 : -1;
-//                int dirY = diffY > 0 ? 1 : -1;
                 int startX = Math.min(x, destX);
                 int endX = Math.max(x, destX);
                 int startY = Math.min(y, destY);
@@ -108,7 +101,6 @@ public class Board {
         board = new Piece[8][8];        //Empty the board
         resetGame(true);          //Fill black
         resetGame(false);         //Fill white
-        lastMove = Piece.Side.BLACK;
     }
 
     protected void resetGame(boolean isBlack){
