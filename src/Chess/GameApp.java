@@ -102,17 +102,13 @@ class ChessEngine extends Canvas {
             int lenAtIdx = 8;
             int pxPerVer = getHeight() / lenAtIdx;
             for (int j = 0; j < 8; j++) {
-                Color c = i  % 2 == j % 2 ? Color.LIGHT_GRAY : Color.DARK_GRAY.darker();
+                Color c = i  % 2 == j % 2 ? Color.LIGHT_GRAY : Color.DARK_GRAY;
                 g.setColor(c);
                 g.fillRect(i * pxPerHor, j * pxPerVer,pxPerHor, pxPerVer);
-
                 if(activePiece != null){
                     if(board.canMove(activePiece.x, activePiece.y, i,j)){
-                        c = i  % 2 == j % 2 ? Color.GREEN.brighter() : Color.GREEN.darker().darker();
-
+                        c = i  % 2 == j % 2 ? Color.GREEN.darker() : Color.GREEN.darker().darker();
                         g.setColor(c);
-                        System.out.println("Is Drawing rectangle " + i +", " + j);
-
                         g.fillRect(i * pxPerHor, j * pxPerVer,pxPerHor, pxPerVer);
 
                     }
@@ -121,7 +117,7 @@ class ChessEngine extends Canvas {
                 if(board.get(i,j) != null){
                     Color d = board.get(i,j).getSide() == Piece.Side.WHITE? Color.WHITE : Color.BLACK;
                     g.setColor(d);
-                    g.setFont(new Font("TimesRoman", Font.PLAIN, pxPerVer));
+                    g.setFont(new Font("TimesRoman", Font.PLAIN, Math.min(pxPerHor, pxPerVer)));
                     g.drawString(board.get(i,j).getSymbol(),i * pxPerHor, j * pxPerVer + pxPerVer);
                 }
 
