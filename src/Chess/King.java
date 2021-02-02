@@ -1,4 +1,4 @@
-import Chess.Piece;
+package  Chess;
 
 public class King extends Piece {
 
@@ -7,15 +7,7 @@ public class King extends Piece {
     }
 
     @Override
-    public void move(int x, int y) {
-        if(canMove(x,y)){
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-    @Override
-    public boolean canMove(int x, int y) {
+    public boolean canMove(int x, int y, boolean isKilling) {
         return (Math.abs(this.x - x) <= 1 && Math.abs(this.y) - y <=1);
     }
 }

@@ -26,9 +26,17 @@ public abstract class Piece {
         return hasMoved;
     }
 
-    public abstract void move(int x, int y);
+    public abstract boolean canMove(int x, int y, boolean isKilling);
 
-    public abstract boolean canMove(int x, int y);
+    public void move(int x, int y){
+        this.x = x;
+        this.y = y;
+        hasMoved = true;
+    }
+
+    public boolean canHop(){
+        return false;
+    }
 
     public void kill(){
         this.x = -1;

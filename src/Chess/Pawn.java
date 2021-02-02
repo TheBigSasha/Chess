@@ -17,18 +17,13 @@ public class Pawn extends Piece{
 
     }
 
-
     @Override
-    public void move(int x, int y) {
-        if(promotedTo != null){
-            promotedTo.move(x,y);
-        }else{
-            //enforce rules
+    public boolean canMove(int x, int y, boolean isKilling) {
+        int acceptableDifferenceY = this.getSide().equals(Side.BLACK) ? -1 : 1;
+        int acceptableDifferenceX = isKilling ? 0 : 1;
+        if(!hasMoved()){
+            acceptableDifferenceY *=2;
         }
-    }
-
-    @Override
-    public boolean canMove(int x, int y) {
-        return false;
+        return this.y - y == acceptableDifferenceY && Math.abs(this.x - x) == acceptableDifferenceX;
     }
 }
