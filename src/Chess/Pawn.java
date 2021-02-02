@@ -19,12 +19,12 @@ public class Pawn extends Piece{
 
     @Override
     public boolean canMove(int x, int y, boolean isKilling) {
-        int acceptableDifferenceY = this.getSide().equals(Side.BLACK) ? -1 : 1;
-        int acceptableDifferenceX = isKilling ? 0 : 1;
+        int acceptableDifferenceY = this.getSide().equals(Side.BLACK) ? 1 : -1;
+        int acceptableDifferenceX = isKilling ? 1 : 0;
         if(!hasMoved()){
             acceptableDifferenceY *=2;
         }
-        return this.y - y == acceptableDifferenceY && Math.abs(this.x - x) == acceptableDifferenceX;
+        return this.y - y <= acceptableDifferenceY && Math.abs(this.x - x) <= acceptableDifferenceX;        //TODO: fix this to account for direction (don't abs y) and for not being dumb
     }
 
     @Override

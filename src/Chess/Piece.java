@@ -50,6 +50,10 @@ public abstract class Piece {
         return side;
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
+
     public void setSide(Side side) {
         this.side = side;
     }

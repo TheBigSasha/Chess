@@ -1,5 +1,7 @@
 package Chess;
 
+import java.util.ArrayList;
+
 public class Board {
     private Piece[][] board;
     private Piece.Side lastMove;
@@ -31,7 +33,8 @@ public class Board {
         if (toMove == null) return false;
 
         //Checks last move
-        if(toMove.getSide() == lastMove) return false;
+//        if(toMove.getSide() == lastMove) return false;
+        //TODO: bring back this check but in game class?
 
         //Checks if it is a kill and if it will hit a piece of the same side
         if(board[destX][destY] != null){
@@ -42,7 +45,7 @@ public class Board {
         }
 
         //Check if it can move by the rules of the piece
-        if (!toMove.canMove(destX, destY, killing)) return false;
+        if (!toMove.canMove(destX, destY, killing)){ return false;}
 
         //Check collision on the way, if it is not a horsey
         if (!toMove.canHop()) {
@@ -114,21 +117,33 @@ public class Board {
         int soldierRow = isBlack ? 1 : 6;       //TODO: check that black is 0 everywhere
         Piece.Side side = isBlack ? Piece.Side.BLACK : Piece.Side.WHITE;
 
-        board[kingRow][0] = new Rook(0, kingRow, side);
-        board[kingRow][7] = new Rook(7,kingRow, side);
+        board[0][kingRow] = new Rook(0, kingRow, side);
+        board[7][kingRow] = new Rook(7,kingRow, side);
 
-        board[kingRow][1] = new Knight(1, kingRow, side);
-        board[kingRow][6] = new Knight(6, kingRow, side);
+        board[1][kingRow] = new Knight(1, kingRow, side);
+        board[6][kingRow] = new Knight(6, kingRow, side);
 
-        board[kingRow][2] = new Bishop(2, kingRow, side);
-        board[kingRow][5] = new Bishop(5, kingRow, side);
+        board[2][kingRow] = new Bishop(2, kingRow, side);
+        board[5][kingRow] = new Bishop(5, kingRow, side);
 
-        board[kingRow][3] = new King(3,kingRow,side);
-        board[kingRow][4] = new Queen(4,kingRow,side);
+        board[3][kingRow] = new King(3,kingRow,side);
+        board[4][kingRow] = new Queen(4,kingRow,side);
 
         for(int i = 0; i < board[soldierRow].length; i++){
-            board[soldierRow][i] = new Pawn(i, soldierRow, side);
+            board[i][soldierRow] = new Pawn(i, soldierRow, side);
         }
+    }
+
+    public King getKing(Piece.Side side){
+        for(Piece[] array : board){
+            for(Piece p : array){
+                if(p instanceof King && p.getSide() == side){
+                    return (King) p;
+                }
+            }
+        }
+
+        return null;
     }
 
     public String toString(){
@@ -144,5 +159,22 @@ public class Board {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public ArrayList<Piece> getPieces(Piece.Side s){
+        ArrayList<Piece> out = new ArrayList<Piece>();
+        for(Piece[] array : board){
+            for(Piece p : array){
+                if(p != null && !p.isDead() && p.getSide() == s){
+                    out.add(p);
+                }
+            }
+        }
+        return out;
+    }
+
+
+    public Piece get(int x, int y) {
+        return board[x][y];
     }
 }
